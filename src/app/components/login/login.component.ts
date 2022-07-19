@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { usuarios } from 'src/app/models/usuario.model';
+import { Usuarios } from 'src/app/models/usuario.model';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 
@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
 
 
   // imprimir
-  public usuariosModel: usuarios;
+  public usuariosModel: Usuarios;
 
   constructor(private _usuariosServices: UsuariosService, private _router: Router) {
 
-    this.usuariosModel = new usuarios('', '', '', '', '', '', '', 0);
+    this.usuariosModel = new Usuarios('', '', '', '', '', '', '', 0);
 
   }
 

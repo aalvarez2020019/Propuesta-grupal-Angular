@@ -21,11 +21,16 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active"> Dashboard </a>
+          <a class="nav-link" routerLink="/vistaadmin" routerLinkActive="active"> Super Admin </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/vistausuario" routerLinkActive="active"> Usuario </a>
         </li>
 
       </ul>
 
     </div>
+    <a class="navbar-brand" (click)="clearToken()"  routerLink="/login" routerLinkActive="active">Cerrar sesión</a>
   </div>
 </nav>

@@ -1,0 +1,140 @@
+<!-- Modal Ver usuarios -->
+
+<br>
+<div class="container ">
+  <div class="container text-center text-Whyte bg-white py-4">
+      <div class="container">
+                  <h1 >
+                     USUARIOS REGISTRADOS</h1>
+<br>
+
+
+
+<div class = "container">
+  <div class ="row">
+    <div class="col-12 col-md-4" *ngFor="let user of usuariosModelGet">
+      <div class="card text-white bg-secondary mb-3">
+        <div class="card-body">
+          <h4 class="card-title">{{ user.nombre }}</h4>
+          <h4 class="card-title">{{ user.apellido }}</h4>
+
+
+          <br>
+          <br>
+
+          <p class="card-text">ID: {{user._id}}</p>
+          <p class="card-text">Email: {{ user.email }}</p>
+          <p class="card-text">Direccion: {{ user.direccion }}</p>
+          <p class="card-text">Edad: {{ user.edad }}</p>
+          <p class="card-text">Rol: {{ user.rol }}</p>
+
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<h1 >
+  DOCTORES REGISTRADOS</h1>
+
+  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarDoctor">
+    Agregar Doctor
+  </button>
+
+  <br>
+  <br>
+
+  <div class = "container">
+    <div class ="row">
+      <div class="col-12 col-md-4" *ngFor="let doctor of doctoresModelGet">
+        <div class="card text-white bg-secondary mb-3">
+          <div class="card-body">
+            <h4 class="card-title">{{ doctor.nombre }}</h4>
+            <h4 class="card-title">{{ doctor.apellido }}</h4>
+
+
+            <br>
+            <br>
+
+            <p class="card-text">ID: {{doctor._id}}</p>
+            <p class="card-text">Email: {{ doctor.email }}</p>
+            <p class="card-text">Direccion: {{ doctor.direccion }}</p>
+            <p class="card-text">Edad: {{ doctor.edad }}</p>
+            <p class="card-text">Rol: {{ doctor.rol }}</p>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <!-- Modal Agregar Administrador Hoteles-->
+<div class="modal fade" id="modalAgregarDoctor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+
+        <h5 class="modal-title text-light" id="exampleModalLabel">Agregar Doctor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+
+          <div class="mb-3 text-light">
+            <label for="inputNombre" class="form-label"> Nombre Usuario</label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="usuariosModelPost.nombre">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputApellido" class="form-label"> Apellido Usuario</label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputApellido" name="apellido" #apellido="ngModel"
+            [(ngModel)]="usuariosModelPost.apellido">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputEmail" class="form-label"> Email </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputEmail" name="email" #email="ngModel"
+            [(ngModel)]="usuariosModelPost.email">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputPassword" class="form-label"> Password </label>
+            <input type="password" autocomplete ="off" class="form-control" id="inputPassword" name="password" #password="ngModel"
+            [(ngModel)]="usuariosModelPost.password">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputDireccion" class="form-label"> Direccion </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel"
+            [(ngModel)]="usuariosModelPost.direccion">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputEdad" class="form-label"> Edad </label>
+            <input type="number" autocomplete ="off" class="form-control" id="inputEdad" name="edad" #edad="ngModel"
+            [(ngModel)]="usuariosModelPost.edad">
+          </div>
+
+
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postAdminAgregar()">Agregar</button>
+
+      </div>
+    </div>
+  </div>
+</div>

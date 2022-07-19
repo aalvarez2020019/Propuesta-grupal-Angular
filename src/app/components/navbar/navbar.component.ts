@@ -10,6 +10,11 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  clearToken(){
+    localStorage.clear();
   }
 
 }

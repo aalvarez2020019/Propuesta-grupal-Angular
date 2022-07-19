@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { usuarios } from '../models/usuario.model';
+import { Usuarios } from '../models/usuario.model';
+import { Citas } from '../models/cita.model';
 
 @Injectable({
   providedIn: 'root'
@@ -56,13 +57,35 @@ export class UsuariosService {
 
 
      // Registrar usuarios
-    registrarUsuarios(modeloUsuarios: usuarios): Observable<any> {
+    registrarUsuarios(modeloUsuarios: Usuarios): Observable<any> {
 
       let parametros = JSON.stringify(modeloUsuarios);
 
       return this._http.post(this.url + '/registrarUsuarios', parametros, {headers: this.headersVariable});
 
     }
+
+     // obtener usuarios ROL_USUARIO
+
+    verDoctores(token) : Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token );
+
+    return this._http.get(this.url + '/verDoctoresUser', { headers: headersToken});
+
+  }
+
+    // obtener citas
+    verCitas(token) : Observable<any> {
+
+      let headersToken = this.headersVariable.set('Authorization', token );
+
+      return this._http.get(this.url + '/obtenerCitasUser', { headers: headersToken});
+
+    }
+
+
+
 
 
 
