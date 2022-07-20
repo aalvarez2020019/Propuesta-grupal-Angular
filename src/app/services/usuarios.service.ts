@@ -84,6 +84,17 @@ export class UsuariosService {
 
     }
 
+    // agregar Doctores
+    agregarCita(modeloCita: Citas, token) : Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token )
+
+    let parametros = JSON.stringify(modeloCita);
+
+    return this._http.post(this.url + '/agregarCita', parametros, {headers: headersToken});
+
+  }
+
 
 
 

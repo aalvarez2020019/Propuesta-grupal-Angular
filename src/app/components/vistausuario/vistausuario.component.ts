@@ -16,13 +16,17 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class VistausuarioComponent implements OnInit {
 
   public doctoresModelGet: Usuarios;
-  
+
   public citasModelGet: Citas;
+
+  public citasModelPost: Citas;
+
   public token;
 
 
   constructor(public _usuarioService: UsuariosService) {
 
+    this.citasModelPost = new Citas('', '', '', '', '', 0, '', '', '', 0, '', '', 0, '', '');
     this.token = this._usuarioService.obtenerToken();
 
   }
@@ -54,6 +58,25 @@ export class VistausuarioComponent implements OnInit {
 
     )
   }
+
+  // Agregar admin hotel
+  postAgregarCitas(){
+    this._usuarioService.agregarCita(this.citasModelPost, this._usuarioService.obtenerToken()).subscribe(
+
+      (response)=>{
+        console.log(response);
+        this.getCitas();
+
+      (error)=>{
+        console.log(error)
+
+      }
+
+
+    }
+  )
+}
+
 
   ngOnInit(): void {
     this.getDoctores();

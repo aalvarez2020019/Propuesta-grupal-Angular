@@ -40,6 +40,10 @@
 <h1 >
   CITAS DE ESTE USUARIO</h1>
 
+  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarCita">
+    Agregar Cita
+  </button>
+
   <br>
   <br>
 
@@ -76,3 +80,108 @@
 
   <br>
   <br>
+
+
+   <!-- Modal Agregar Citas-->
+<div class="modal fade" id="modalAgregarCita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+
+        <h5 class="modal-title text-light" id="exampleModalLabel">Agregar Cita</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+
+          <div class="mb-3 text-light">
+            <label for="inputNombre" class="form-label"> Nombre Usuario</label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel"
+            [(ngModel)]="citasModelPost.nombre">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputApellido" class="form-label"> Apellido Usuario</label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputApellido" name="apellido" #apellido="ngModel"
+            [(ngModel)]="citasModelPost.apellido">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputPeso" class="form-label"> Peso </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputPeso" name="peso" #peso="ngModel"
+            [(ngModel)]="citasModelPost.peso">
+          </div>
+
+
+          <div class="mb-3 text-light">
+            <label for="inputEnfermedad" class="form-label"> Enfermedades </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputEnfermedad" name="enfermedad" #enfermedad="ngModel"
+            [(ngModel)]="citasModelPost.enfermedades">
+          </div>
+
+
+          <div class="mb-3 text-light">
+            <label for="inputEdad" class="form-label"> Edad </label>
+            <input type="number" autocomplete ="off" class="form-control" id="inputEdad" name="edad" #edad="ngModel"
+            [(ngModel)]="citasModelPost.edad">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputEstatura" class="form-label"> Estatura </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputEstatura" name="estatura" #estatura="ngModel"
+            [(ngModel)]="citasModelPost.estatura">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputDireccion" class="form-label"> Direccion </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputDireccion" name="direccion" #direccion="ngModel"
+            [(ngModel)]="citasModelPost.direccion">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputPais" class="form-label"> Pais </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputPais" name="pais" #pais="ngModel"
+            [(ngModel)]="citasModelPost.pais">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputFecha" class="form-label"> Fecha </label>
+            <input type="date" autocomplete ="off" class="form-control" id="inputFecha" name="fecha" #fecha="ngModel"
+            [(ngModel)]="citasModelPost.fecha">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputHora" class="form-label"> Hora </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputHora" name="hora" #hora="ngModel"
+            [(ngModel)]="citasModelPost.hora">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputDoctor" class="form-label"> Id Doctor </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputDoctor" name="doctor" #doctor="ngModel"
+            [(ngModel)]="citasModelPost.doctor">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputTelefono" class="form-label"> Telefono </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel"
+            [(ngModel)]="citasModelPost.telefono">
+          </div>
+
+
+
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postAgregarCitas()">Agregar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
