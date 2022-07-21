@@ -21,12 +21,15 @@ export class VistausuarioComponent implements OnInit {
 
   public citasModelPost: Citas;
 
+  public doctoresModelGetId: Usuarios;
+
   public token;
 
 
   constructor(public _usuarioService: UsuariosService) {
 
     this.citasModelPost = new Citas('', '', '', '', '', 0, '', '', '', 0, '', '', 0, '', '');
+    this.doctoresModelGetId = new Usuarios('', '', '', '', '', '', '', 0);
     this.token = this._usuarioService.obtenerToken();
 
   }
@@ -72,6 +75,25 @@ export class VistausuarioComponent implements OnInit {
 
       }
 
+
+    }
+  )
+}
+
+// GET ID HOTEL
+getDoctorId(idUser){
+
+  this._usuarioService.obtenerDoctoresId(idUser, this.token).subscribe(
+
+    (response)=>{
+      console.log(response);
+
+      this.doctoresModelGetId = response.Usuario;
+
+    },
+
+    (error)=>{
+      console.log(error)
 
     }
   )

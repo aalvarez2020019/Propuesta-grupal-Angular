@@ -18,6 +18,7 @@
           <h4 class="card-title">{{ doctor.nombre }}</h4>
           <h4 class="card-title">{{ doctor.apellido }}</h4>
 
+          <img src="../../../assets/img/doctor.png" class="card-img-top" alt="compras-logo">
 
           <br>
           <br>
@@ -27,6 +28,10 @@
             <p class="card-text">Direccion: {{ doctor.direccion }}</p>
             <p class="card-text">Edad: {{ doctor.edad }}</p>
             <p class="card-text">Rol: {{ doctor.rol }}</p>
+
+            <div class="card-footer text-muted">
+              <button type="button" class="btn btn btn-warning" (click)="getDoctorId(doctor._id)" [routerLink]="['/infodoctor', doctor._id]">Informacion</button>
+            </div>
 
         </div>
 
@@ -55,6 +60,7 @@
             <h4 class="card-title">{{ cita.nombre }}</h4>
             <h4 class="card-title">{{ cita.apellido }}</h4>
 
+            <img src="../../../assets/img/agenda.png" class="card-img-top" alt="agenda">
 
             <br>
             <br>

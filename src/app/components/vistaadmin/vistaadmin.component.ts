@@ -22,6 +22,9 @@ export class VistaadminComponent implements OnInit {
 
   public usuariosModelPost: Usuarios;
 
+  public doctoresModelGetId: Usuarios;
+
+
 
   public token;
 
@@ -29,6 +32,7 @@ export class VistaadminComponent implements OnInit {
   constructor(public _usuarioService: SuperadminservicioService) {
 
     this.usuariosModelPost = new Usuarios('', '', '', '', '', '', '', 0);
+    this.doctoresModelGetId = new Usuarios('', '', '', '', '', '', '', 0);
     this.token = this._usuarioService.obtenerToken();
 
   }
@@ -77,6 +81,27 @@ export class VistaadminComponent implements OnInit {
       }
     )
   }
+
+  // GET ID HOTEL
+verDoctorid(idUser){
+
+  this._usuarioService.obtenerDoctoresId(idUser, this.token).subscribe(
+
+    (response)=>{
+      console.log(response);
+
+      this.doctoresModelGetId = response.Usuario;
+
+    },
+
+    (error)=>{
+      console.log(error)
+
+    }
+  )
+}
+
+
 
   ngOnInit(): void {
 

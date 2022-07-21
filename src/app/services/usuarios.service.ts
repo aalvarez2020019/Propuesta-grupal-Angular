@@ -95,6 +95,25 @@ export class UsuariosService {
 
   }
 
+  // obtener doctores id
+  obtenerDoctoresId(idDoctor, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token );
+
+    return this._http.get(this.url + '/buscarDoctorId/' + idDoctor, { headers: headersToken});
+
+  }
+
+  // Ver citas de un doctor ROL_USER
+  verCitasDoc(idDoc, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token );
+
+    return this._http.get(this.url + '/verCitasDoctor/' + idDoc, { headers: headersToken});
+
+  }
+
+
 
 
 
