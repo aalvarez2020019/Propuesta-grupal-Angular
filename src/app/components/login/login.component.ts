@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuarios } from 'src/app/models/usuario.model';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -68,9 +69,28 @@ export class LoginComponent implements OnInit {
         console.log(response);
 
         this._router.navigate(['/inicio'])
+
+        
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Bienvenido',
+          text: 'Logueado exitosamente',
+          showConfirmButton: false,
+          timer: 1500
+
+        })
       },
+
       (error)=>{
         console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: error.error.mensaje,
+          footer: '*Ingrese los datos de nuevo*',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     )
   }

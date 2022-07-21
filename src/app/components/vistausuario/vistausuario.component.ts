@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuarios } from 'src/app/models/usuario.model';
 import { Citas } from 'src/app/models/cita.model';
+import Swal from 'sweetalert2';
 
 
 // servicios
@@ -70,12 +71,21 @@ export class VistausuarioComponent implements OnInit {
         console.log(response);
         this.getCitas();
 
-      (error)=>{
-        console.log(error)
+        Swal.fire(
+          '¡Agregado!',
+          'El usuario fue agregado con éxito',
+          'success'
+        )
+    }, (error)=>{
+      
+      console.log(error)
+      Swal.fire({
+      icon: 'error',
+      title: 'No se pudo agregar',
+      text: error.error.message,
+      footer: 'Revise sus datos',
 
-      }
-
-
+    })
     }
   )
 }
