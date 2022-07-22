@@ -12,9 +12,6 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { VistaadminComponent } from './components/vistaadmin/vistaadmin.component';
 import { VistausuarioComponent } from './components/vistausuario/vistausuario.component';
-import { VistadoctorComponent } from './components/vistadoctor/vistadoctor.component';
-import { InfodoctorComponent } from './components/infodoctor/infodoctor.component';
-import { InfodoctoradminComponent } from './components/infodoctoradmin/infodoctoradmin.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +23,6 @@ import { InfodoctoradminComponent } from './components/infodoctoradmin/infodocto
     RegistrarComponent,
     VistaadminComponent,
     VistausuarioComponent,
-    VistadoctorComponent,
-    InfodoctorComponent,
-    InfodoctoradminComponent,
 
   ],
   imports: [

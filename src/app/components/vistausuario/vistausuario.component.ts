@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuarios } from 'src/app/models/usuario.model';
 import { Citas } from 'src/app/models/cita.model';
-import Swal from 'sweetalert2';
 
 
 // servicios
@@ -17,20 +16,13 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class VistausuarioComponent implements OnInit {
 
   public doctoresModelGet: Usuarios;
-
+  
   public citasModelGet: Citas;
-
-  public citasModelPost: Citas;
-
-  public doctoresModelGetId: Usuarios;
-
   public token;
 
 
   constructor(public _usuarioService: UsuariosService) {
 
-    this.citasModelPost = new Citas('', '', '', '', '', 0, '', '', '', 0, '', '', 0, '', '');
-    this.doctoresModelGetId = new Usuarios('', '', '', '', '', '', '', 0);
     this.token = this._usuarioService.obtenerToken();
 
   }
@@ -62,53 +54,6 @@ export class VistausuarioComponent implements OnInit {
 
     )
   }
-
-  // Agregar admin hotel
-  postAgregarCitas(){
-    this._usuarioService.agregarCita(this.citasModelPost, this._usuarioService.obtenerToken()).subscribe(
-
-      (response)=>{
-        console.log(response);
-        this.getCitas();
-
-        Swal.fire(
-          '¡Agregado!',
-          'El usuario fue agregado con éxito',
-          'success'
-        )
-    }, (error)=>{
-      
-      console.log(error)
-      Swal.fire({
-      icon: 'error',
-      title: 'No se pudo agregar',
-      text: error.error.message,
-      footer: 'Revise sus datos',
-
-    })
-    }
-  )
-}
-
-// GET ID HOTEL
-getDoctorId(idUser){
-
-  this._usuarioService.obtenerDoctoresId(idUser, this.token).subscribe(
-
-    (response)=>{
-      console.log(response);
-
-      this.doctoresModelGetId = response.Usuario;
-
-    },
-
-    (error)=>{
-      console.log(error)
-
-    }
-  )
-}
-
 
   ngOnInit(): void {
     this.getDoctores();

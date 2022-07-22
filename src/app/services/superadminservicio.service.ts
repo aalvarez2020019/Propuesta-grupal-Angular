@@ -55,24 +55,5 @@ export class SuperadminservicioService {
   }
 
 
-  // obtener doctores id
-  obtenerDoctoresId(idDoctor, token): Observable<any> {
-
-    let headersToken = this.headersVariable.set('Authorization', token );
-
-    return this._http.get(this.url + '/buscarDoctorId/' + idDoctor, { headers: headersToken});
-
-  }
-
-  // Ver citas doc
-  getCitasDoc(idDoc, token): Observable<any> {
-
-    let headersToken = this.headersVariable.set('Authorization', token );
-
-    return this._http.get(this.url + '/verCitasDoctor/' + idDoc, { headers: headersToken});
-
-  }
-
-
 
 }

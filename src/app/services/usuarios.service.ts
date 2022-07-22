@@ -84,36 +84,6 @@ export class UsuariosService {
 
     }
 
-    // agregar Doctores
-    agregarCita(modeloCita: Citas, token) : Observable<any> {
-
-    let headersToken = this.headersVariable.set('Authorization', token )
-
-    let parametros = JSON.stringify(modeloCita);
-
-    return this._http.post(this.url + '/agregarCita', parametros, {headers: headersToken});
-
-  }
-
-  // obtener doctores id
-  obtenerDoctoresId(idDoctor, token): Observable<any> {
-
-    let headersToken = this.headersVariable.set('Authorization', token );
-
-    return this._http.get(this.url + '/buscarDoctorId/' + idDoctor, { headers: headersToken});
-
-  }
-
-  // Ver citas de un doctor ROL_USER
-  verCitasDoc(idDoc, token): Observable<any> {
-
-    let headersToken = this.headersVariable.set('Authorization', token );
-
-    return this._http.get(this.url + '/verCitasDoctor/' + idDoc, { headers: headersToken});
-
-  }
-
-
 
 
 

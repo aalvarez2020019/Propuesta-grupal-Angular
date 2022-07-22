@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuarios } from 'src/app/models/usuario.model';
-import Swal from 'sweetalert2';
 
 // importacion servicios
 import { SuperadminservicioService } from 'src/app/services/superadminservicio.service';
@@ -23,9 +22,6 @@ export class VistaadminComponent implements OnInit {
 
   public usuariosModelPost: Usuarios;
 
-  public doctoresModelGetId: Usuarios;
-
-
 
   public token;
 
@@ -33,7 +29,6 @@ export class VistaadminComponent implements OnInit {
   constructor(public _usuarioService: SuperadminservicioService) {
 
     this.usuariosModelPost = new Usuarios('', '', '', '', '', '', '', 0);
-    this.doctoresModelGetId = new Usuarios('', '', '', '', '', '', '', 0);
     this.token = this._usuarioService.obtenerToken();
 
   }
@@ -73,45 +68,15 @@ export class VistaadminComponent implements OnInit {
           console.log(response);
           this.getDoctores();
 
-          Swal.fire(
-            '¡Agregado!',
-            'El usuario fue agregado con éxito',
-            'success'
-          )
-        },
         (error)=>{
           console.log(error)
-          Swal.fire({
-          icon: 'error',
-          title: 'No se pudo agregar',
-          text: error.error.message,
-          footer: 'El correo ya existe, ingrese otro',
 
-        })
+        }
+
+
       }
     )
   }
-
-  // GET ID HOTEL
-verDoctorid(idUser){
-
-  this._usuarioService.obtenerDoctoresId(idUser, this.token).subscribe(
-
-    (response)=>{
-      console.log(response);
-
-      this.doctoresModelGetId = response.Usuario;
-
-    },
-
-    (error)=>{
-      console.log(error)
-
-    }
-  )
-}
-
-
 
   ngOnInit(): void {
 

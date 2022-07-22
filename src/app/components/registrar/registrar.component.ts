@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuarios } from 'src/app/models/usuario.model';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar',
@@ -30,23 +29,11 @@ export class RegistrarComponent implements OnInit {
 
       (response) => {
         console.log(response);
-        this._router.navigate(["login"]);
-
-        Swal.fire(
-          '¡Registrado!',
-          'El usuario fue agregado con éxito',
-          'success'
-        )
+        this._router.navigate(["login"])
       },
       (error) =>{
-        console.log(error)
-        Swal.fire({
-        icon: 'error',
-        title: 'No se pudo agregar',
-        text: error.error.message,
-        footer: 'Llene todos los datos',
+        console.log(<any> error)
 
-      })
       }
     );
   }
