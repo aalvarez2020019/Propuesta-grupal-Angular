@@ -192,6 +192,14 @@ getUsuarioId(idDoctor, token): Observable<any> {
 
 }
 
+// HOSPITALES inicio
+hospitalesInicio(): Observable<any> {
+
+
+  return this._http.get(this.url + '/hospitalesInicio', {headers: this.headersVariable});
+
+}
+
 
 
 
