@@ -75,7 +75,7 @@ export class VistaadminComponent implements OnInit {
 
           Swal.fire(
             '¡Agregado!',
-            'El usuario fue agregado con éxito',
+            'El doctor fue agregado con éxito',
             'success'
           )
         },
@@ -110,6 +110,81 @@ verDoctorid(idUser){
     }
   )
 }
+
+
+ // eliminar usuarios
+ eliminarUsuarios(idServicio){
+
+  this._usuarioService.eliminarUsuarios(idServicio, this.token).subscribe(
+
+    (response)=>{
+
+      console.log(response);
+
+      this.getUsuarios();
+
+
+    },
+    (error)=>{
+      console.log(error)
+
+  }
+  )
+}
+
+ // eliminar doctores
+ eliminarDoctores(idServicio){
+
+  this._usuarioService.eliminarDoctores(idServicio, this.token).subscribe(
+
+    (response)=>{
+
+      console.log(response);
+
+      this.getDoctores();
+
+
+    },
+    (error)=>{
+      console.log(error)
+
+  }
+  )
+}
+
+ // editar usuarios
+ putUsuarios(){
+
+  this._usuarioService.editarUsuarios(this.doctoresModelGetId, this.token).subscribe(
+
+    (response)=>{
+
+      console.log(response);
+
+      this.getUsuarios();
+
+    },
+
+
+  )
+}
+
+// editar doctores
+putDoctores(){
+
+  this._usuarioService.editarDoctores(this.doctoresModelGetId, this.token).subscribe(
+
+    (response)=>{
+
+      console.log(response);
+
+      this.getDoctores();
+
+    },
+
+  )
+}
+
 
 
 

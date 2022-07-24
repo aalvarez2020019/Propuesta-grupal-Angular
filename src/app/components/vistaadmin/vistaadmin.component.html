@@ -29,6 +29,14 @@
           <p class="card-text">Edad: {{ user.edad }}</p>
           <p class="card-text">Rol: {{ user.rol }}</p>
 
+          <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editarUsuariosApp"
+          aria-controls="offcanvasExample" (click)="verDoctorid(user._id)">
+            Editar
+          </button>
+
+          <button type="button" class="btn btn-danger mx-2" (click)="eliminarUsuarios(user._id)">Eliminar</button>
+
+
         </div>
 
     </div>
@@ -67,6 +75,15 @@
             <p class="card-text">Direccion: {{ doctor.direccion }}</p>
             <p class="card-text">Edad: {{ doctor.edad }}</p>
             <p class="card-text">Rol: {{ doctor.rol }}</p>
+
+            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editarDoctoresApp"
+          aria-controls="offcanvasExample" (click)="verDoctorid(doctor._id)">
+            Editar
+          </button>
+
+
+            <button type="button" class="btn btn-danger mx-2" (click)="eliminarDoctores(doctor._id)">Eliminar</button>
+
 
             <div class="card-footer text-muted">
               <button type="button" class="btn btn btn-success" (click)="verDoctorid(doctor._id)" [routerLink]="['/infodoctoradmin', doctor._id]">Informacion</button>
@@ -143,5 +160,85 @@
 
       </div>
     </div>
+  </div>
+</div>
+
+
+<!-- Modal Editar Usuarios-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="editarUsuariosApp" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuarios</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class ="mb-3">
+
+        <label for="nombre" class="form-label"> Nombre </label>
+          <input type="text" autocomplete ="off" class="form-control" id="nombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="doctoresModelGetId.nombre">
+
+          <label for="apelli" class="form-label"> Apellido </label>
+          <input type="text" autocomplete ="off" class="form-control" id="apelli" name="apelli" #apelli="ngModel"
+          [(ngModel)]="doctoresModelGetId.apellido">
+
+          <label for="emailI" class="form-label"> Email </label>
+          <input type="text" autocomplete ="off" class="form-control" id="emailI" name="emailI" #emailI="ngModel"
+          [(ngModel)]="doctoresModelGetId.email">
+
+          <label for="direc" class="form-label"> Direccion </label>
+          <input type="text" autocomplete ="off" class="form-control" id="direc" name="direc" #direc="ngModel"
+          [(ngModel)]="doctoresModelGetId.direccion">
+
+          <label for="iedad" class="form-label"> Edad </label>
+          <input type="text" autocomplete ="off" class="form-control" id="iedad" name="iedad" #iedad="ngModel"
+          [(ngModel)]="doctoresModelGetId.edad">
+
+          <br>
+
+          <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putUsuarios()">Editar Usuarios</button>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Modal Editar Doctores -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="editarDoctoresApp" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuarios</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class ="mb-3">
+
+        <label for="nombreI" class="form-label"> Nombre </label>
+          <input type="text" autocomplete ="off" class="form-control" id="nombreI" name="nombreI" #nombreI="ngModel"
+          [(ngModel)]="doctoresModelGetId.nombre">
+
+          <label for="apellid" class="form-label"> Apellido </label>
+          <input type="text" autocomplete ="off" class="form-control" id="apellid" name="apellid" #apellid="ngModel"
+          [(ngModel)]="doctoresModelGetId.apellido">
+
+          <label for="emailInp" class="form-label"> Email </label>
+          <input type="text" autocomplete ="off" class="form-control" id="emailInp" name="emailInp" #emailInp="ngModel"
+          [(ngModel)]="doctoresModelGetId.email">
+
+          <label for="direcci" class="form-label"> Direccion </label>
+          <input type="text" autocomplete ="off" class="form-control" id="direcci" name="direcci" #direcci="ngModel"
+          [(ngModel)]="doctoresModelGetId.direccion">
+
+          <label for="edadIn" class="form-label"> Edad </label>
+          <input type="text" autocomplete ="off" class="form-control" id="edadIn" name="edadIn" #edadIn="ngModel"
+          [(ngModel)]="doctoresModelGetId.edad">
+
+          <br>
+
+          <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putDoctores()">Editar Usuarios</button>
+
+      </div>
+    </form>
   </div>
 </div>

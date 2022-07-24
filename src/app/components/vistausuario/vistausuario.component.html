@@ -66,17 +66,19 @@
             <br>
 
             <p class="card-text">ID: {{cita._id}}</p>
+            <p class="card-text">Número turno: {{cita.numeroTurno}}</p>
             <p class="card-text">Peso: {{cita.peso}}</p>
             <p class="card-text">Enfermedades: {{cita.enfermedades}}</p>
             <p class="card-text">Edad: {{cita.edad}}</p>
             <p class="card-text">Estatura: {{cita.estatura}}</p>
             <p class="card-text">Direccion: {{cita.direccion}}</p>
             <p class="card-text">Pais: {{cita.pais}}</p>
-            <p class="card-text">Numero turno: {{cita.numeroTurno}}</p>
             <p class="card-text">Fecha: {{cita.fecha}}</p>
             <p class="card-text">Hora: {{cita.hora}}</p>
             <p class="card-text">Telefono: {{cita.telefono}}</p>
 
+            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editarCitasApp"
+            aria-controls="offcanvasExample" (click)="getCitasId(cita._id)">Editar</button>
 
           </div>
 
@@ -101,6 +103,12 @@
 
       <div class="modal-body">
         <form>
+
+          <div class="mb-3 text-light">
+            <label for="inputDoctor" class="form-label"> Id Doctor </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputDoctor" name="doctor" #doctor="ngModel"
+            [(ngModel)]="citasModelPost.doctor">
+          </div>
 
           <div class="mb-3 text-light">
             <label for="inputNombre" class="form-label"> Nombre Usuario</label>
@@ -159,19 +167,15 @@
           </div>
 
           <div class="mb-3 text-light">
-            <label for="inputHora" class="form-label"> Hora </label>
+            <label for="inputHora" class="form-label"> Hora cita </label>
             <input type="text" autocomplete ="off" class="form-control" id="inputHora" name="hora" #hora="ngModel"
             [(ngModel)]="citasModelPost.hora">
           </div>
 
-          <div class="mb-3 text-light">
-            <label for="inputDoctor" class="form-label"> Id Doctor </label>
-            <input type="text" autocomplete ="off" class="form-control" id="inputDoctor" name="doctor" #doctor="ngModel"
-            [(ngModel)]="citasModelPost.doctor">
-          </div>
+
 
           <div class="mb-3 text-light">
-            <label for="inputTelefono" class="form-label"> Telefono </label>
+            <label for="inputTelefono" class="form-label"> Teléfono </label>
             <input type="text" autocomplete ="off" class="form-control" id="inputTelefono" name="telefono" #telefono="ngModel"
             [(ngModel)]="citasModelPost.telefono">
           </div>
@@ -189,5 +193,73 @@
 
       </div>
     </div>
+  </div>
+</div>
+
+
+<!-- Modal Editar Citas-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="editarCitasApp" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Usuarios</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class ="mb-3">
+
+        <label for="nombre" class="form-label"> Nombre </label>
+          <input type="text" autocomplete ="off" class="form-control" id="nombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="citasModelGetId.nombre">
+
+          <label for="apelli" class="form-label"> Apellido </label>
+          <input type="text" autocomplete ="off" class="form-control" id="apelli" name="apelli" #apelli="ngModel"
+          [(ngModel)]="citasModelGetId.apellido">
+
+          <label for="pesoI" class="form-label"> Peso </label>
+          <input type="text" autocomplete ="off" class="form-control" id="pesoI" name="pesoI" #pesoI="ngModel"
+          [(ngModel)]="citasModelGetId.peso">
+
+          <label for="enfermedad" class="form-label"> Enfermedades </label>
+          <input type="text" autocomplete ="off" class="form-control" id="enfermedad" name="enfermedad" #enfermedad="ngModel"
+          [(ngModel)]="citasModelGetId.enfermedades">
+
+          <label for="inEdad" class="form-label"> Edad </label>
+          <input type="number" autocomplete ="off" class="form-control" id="inEdad" name="inEdad" #inEdad="ngModel"
+          [(ngModel)]="citasModelGetId.edad">
+
+
+          <label for="inEstatu" class="form-label"> Estatura </label>
+          <input type="text" autocomplete ="off" class="form-control" id="inEstatu" name="inEstatu" #inEstatu="ngModel"
+          [(ngModel)]="citasModelGetId.estatura">
+
+          <label for="inDirec" class="form-label"> Direccion </label>
+          <input type="text" autocomplete ="off" class="form-control" id="inDirec" name="inDirec" #inDirec="ngModel"
+          [(ngModel)]="citasModelGetId.direccion">
+
+          <label for="inPais" class="form-label"> Pais </label>
+          <input type="text" autocomplete ="off" class="form-control" id="inPais" name="inPais" #inPais="ngModel"
+          [(ngModel)]="citasModelGetId.pais">
+
+          <label for="inFecha" class="form-label"> Fecha </label>
+          <input type="date" autocomplete ="off" class="form-control" id="inFecha" name="inFecha" #inFecha="ngModel"
+          [(ngModel)]="citasModelGetId.fecha">
+
+          <label for="inHora" class="form-label"> Hora </label>
+          <input type="text" autocomplete ="off" class="form-control" id="inHora" name="inHora" #inHora="ngModel"
+          [(ngModel)]="citasModelGetId.hora">
+
+          <label for="inTel" class="form-label"> Telefono </label>
+          <input type="number" autocomplete ="off" class="form-control" id="inTel" name="inTel" #inTel="ngModel"
+          [(ngModel)]="citasModelGetId.telefono">
+
+
+
+          <br>
+
+          <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putCitas()">Editar Citas</button>
+
+
+      </div>
+    </form>
   </div>
 </div>

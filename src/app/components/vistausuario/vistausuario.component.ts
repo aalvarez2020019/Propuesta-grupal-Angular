@@ -24,6 +24,9 @@ export class VistausuarioComponent implements OnInit {
 
   public doctoresModelGetId: Usuarios;
 
+  // ver citas por id
+  public citasModelGetId: Citas;
+
   public token;
 
 
@@ -31,6 +34,10 @@ export class VistausuarioComponent implements OnInit {
 
     this.citasModelPost = new Citas('', '', '', '', '', 0, '', '', '', 0, '', '', 0, '', '');
     this.doctoresModelGetId = new Usuarios('', '', '', '', '', '', '', 0);
+
+
+    this.citasModelGetId = new Citas('', '', '', '', '', 0, '', '', '', 0, '', '', 0, '', '');
+
     this.token = this._usuarioService.obtenerToken();
 
   }
@@ -73,17 +80,17 @@ export class VistausuarioComponent implements OnInit {
 
         Swal.fire(
           '¡Agregado!',
-          'El usuario fue agregado con éxito',
+          'La cita fue agregada con éxito',
           'success'
         )
     }, (error)=>{
-      
+
       console.log(error)
       Swal.fire({
       icon: 'error',
       title: 'No se pudo agregar',
       text: error.error.message,
-      footer: 'Revise sus datos',
+      footer: 'Datos incompletos o ya esta reservada esa hora',
 
     })
     }
@@ -108,6 +115,43 @@ getDoctorId(idUser){
     }
   )
 }
+
+// GET ID CITAS
+getCitasId(idCita){
+
+  this._usuarioService.obtenerCitasId(idCita, this.token).subscribe(
+
+    (response)=>{
+      console.log(response);
+
+      this.citasModelGetId = response.Usuario;
+
+    },
+
+    (error)=>{
+      console.log(error)
+
+    }
+  )
+}
+
+
+// editar citas
+putCitas(){
+
+  this._usuarioService.editarCitas(this.citasModelGetId, this.token).subscribe(
+
+    (response)=>{
+
+      console.log(response);
+
+      this.getCitas();
+
+    },
+
+  )
+}
+
 
 
   ngOnInit(): void {

@@ -113,8 +113,25 @@ export class UsuariosService {
 
   }
 
+   // obtener citas id
+   obtenerCitasId(idCita, token): Observable<any> {
 
+    let headersToken = this.headersVariable.set('Authorization', token );
 
+    return this._http.get(this.url + '/buscarCitaId/' + idCita, { headers: headersToken});
+
+  }
+
+  // editar citas
+  editarCitas(modeloCitas: Citas, token): Observable<any> {
+
+    let parametros = JSON.stringify(modeloCitas);
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.put(this.url + '/editarCita/' + modeloCitas._id, parametros, { headers: headersToken })
+
+  }
 
 
 

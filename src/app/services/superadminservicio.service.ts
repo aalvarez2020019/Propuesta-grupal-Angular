@@ -74,5 +74,48 @@ export class SuperadminservicioService {
   }
 
 
+  // Eliminar Usuarios
+  eliminarUsuarios( idUsuario, token ): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token );
+
+    return this._http.delete(this.url + '/eliminarUsuarios/' +  idUsuario, { headers: headersToken});
+
+  }
+
+
+  // Eliminar Usuarios
+  eliminarDoctores( idUsuario, token ): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token );
+
+    return this._http.delete(this.url + '/eliminarUsuarios/' +  idUsuario, { headers: headersToken});
+
+  }
+
+
+   // editar usuarios
+   editarUsuarios(modeloUsuarios: Usuarios, token): Observable<any> {
+
+    let parametros = JSON.stringify(modeloUsuarios);
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.put(this.url + '/editarUsuarios/' + modeloUsuarios._id, parametros, { headers: headersToken })
+
+  }
+
+  // editar doctores
+  editarDoctores(modeloUsuarios: Usuarios, token): Observable<any> {
+
+    let parametros = JSON.stringify(modeloUsuarios);
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.put(this.url + '/editarUsuarios/' + modeloUsuarios._id, parametros, { headers: headersToken })
+
+  }
+
+
 
 }

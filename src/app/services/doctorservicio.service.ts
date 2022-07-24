@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { Usuarios } from '../models/usuario.model';
+// import { Usuarios } from '../models/usuario.model';
+import { Citas } from '../models/cita.model';
 
 
 @Injectable({
@@ -32,6 +33,26 @@ export class DoctorservicioService {
     let headersToken = this.headersVariable.set('Authorization', token );
 
     return this._http.get(this.url + '/citasDoctor', { headers: headersToken});
+
+  }
+
+  // obtener citas id
+  verCitasId(idCita, token): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token );
+
+    return this._http.get(this.url + '/buscarCitaId/' + idCita, { headers: headersToken});
+
+  }
+
+  // editar citas
+  putCitas(modeloCitas: Citas, token): Observable<any> {
+
+    let parametros = JSON.stringify(modeloCitas);
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.put(this.url + '/editarCita/' + modeloCitas._id, parametros, { headers: headersToken })
 
   }
 

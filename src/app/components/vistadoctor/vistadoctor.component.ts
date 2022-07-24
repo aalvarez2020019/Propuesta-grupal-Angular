@@ -12,9 +12,14 @@ import { DoctorservicioService } from 'src/app/services/doctorservicio.service';
 export class VistadoctorComponent implements OnInit {
 
   public citasModelGet: Citas;
+
+  public citasModelGetId: Citas;
+
   public token;
 
   constructor(public _doctorService: DoctorservicioService) {
+
+    this.citasModelGetId = new Citas('', '', '', '', '', 0, '', '', '', 0, '', '', 0, '', '');
 
     this.token = this._doctorService.obtenerToken();
 
@@ -33,6 +38,44 @@ export class VistadoctorComponent implements OnInit {
 
     )
   }
+
+  // GET ID CITAS
+getCitasId(idCita){
+
+  this._doctorService.verCitasId(idCita, this.token).subscribe(
+
+    (response)=>{
+      console.log(response);
+
+      this.citasModelGetId = response.Usuario;
+
+    },
+
+    (error)=>{
+      console.log(error)
+
+    }
+  )
+}
+
+// editar turno
+editarTurno(){
+
+  this._doctorService.putCitas(this.citasModelGetId, this.token).subscribe(
+
+    (response)=>{
+
+      console.log(response);
+
+      this.getCitas();
+
+    },
+
+  )
+}
+
+
+
 
   ngOnInit(): void {
     this.getCitas();
