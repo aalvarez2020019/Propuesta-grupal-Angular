@@ -106,5 +106,14 @@ eliminarDatos( idDatos, token ): Observable<any> {
 
 }
 
+// obtener datos por doctor
+getHospitales(token) : Observable<any> {
+
+  let headersToken = this.headersVariable.set('Authorization', token );
+
+  return this._http.get(this.url + '/verHospitales', { headers: headersToken});
+
+}
+
 
 }

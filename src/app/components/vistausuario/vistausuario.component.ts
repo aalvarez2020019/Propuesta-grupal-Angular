@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuarios } from 'src/app/models/usuario.model';
 import { Citas } from 'src/app/models/cita.model';
+import { Hospitales } from 'src/app/models/hospital.model';
+
 import Swal from 'sweetalert2';
 
 
@@ -14,6 +16,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
   styleUrls: ['./vistausuario.component.scss'],
   providers: [UsuariosService]
 })
+
 export class VistausuarioComponent implements OnInit {
 
   public doctoresModelGet: Usuarios;
@@ -26,6 +29,9 @@ export class VistausuarioComponent implements OnInit {
 
   // ver citas por id
   public citasModelGetId: Citas;
+
+  // ver hospitales
+  public hospitalesModelGet: Hospitales;
 
   public token;
 
@@ -40,6 +46,21 @@ export class VistausuarioComponent implements OnInit {
 
     this.token = this._usuarioService.obtenerToken();
 
+  }
+
+  getHospitales(){
+
+    this._usuarioService.verHospitales(this._usuarioService.obtenerToken()).subscribe(
+
+     (response) => {
+
+       this.hospitalesModelGet = response.Usuario;
+
+       console.log(this.hospitalesModelGet);
+
+     },
+
+    )
   }
 
   getDoctores(){
@@ -178,6 +199,7 @@ putCitas(){
   ngOnInit(): void {
     this.getDoctores();
     this.getCitas();
+    this.getHospitales();
   }
 
 

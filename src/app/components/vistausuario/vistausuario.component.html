@@ -88,8 +88,44 @@
     </div>
   </div>
 
+
   <br>
   <br>
+
+  <h1 >
+    HOSPITAL</h1>
+
+    <br>
+    <br>
+
+    <div class = "container">
+      <div class ="row">
+        <div class="col-12 col-md-4" *ngFor="let hospital of hospitalesModelGet">
+          <div class="card text-white bg-secondary mb-3">
+            <div class="card-body">
+              <h4 class="card-title">{{ hospital.nombre }}</h4>
+
+              <img src="../../../assets/img/hospitales.png" class="card-img-top" alt="compras-logo">
+
+
+              <br>
+              <br>
+
+              <p class="card-text">Pais: {{hospital.pais}}</p>
+              <p class="card-text">Ciudad: {{ hospital.ciudad }}</p>
+              <p class="card-text">Direccion: {{ hospital.direccion }}</p>
+              <p class="card-text">Teléfono: {{ hospital.telefono }}</p>
+
+
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
 
 
    <!-- Modal Agregar Citas-->

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuarios } from 'src/app/models/usuario.model';
+import { Hospitales } from 'src/app/models/hospital.model';
+
 import Swal from 'sweetalert2';
 
 // importacion servicios
@@ -25,6 +27,13 @@ export class VistaadminComponent implements OnInit {
 
   public doctoresModelGetId: Usuarios;
 
+  // hospitales
+  public hospitalesModelGet: Hospitales;
+
+  public hospitalModelPost: Hospitales;
+
+  public hospitalesModelGetId: Hospitales;
+
 
 
   public token;
@@ -34,6 +43,10 @@ export class VistaadminComponent implements OnInit {
 
     this.usuariosModelPost = new Usuarios('', '', '', '', '', '', '', 0);
     this.doctoresModelGetId = new Usuarios('', '', '', '', '', '', '', 0);
+
+    this.hospitalModelPost = new Hospitales('', '', '', '', '', 0);
+    this.hospitalesModelGetId = new Hospitales('', '', '', '', '', 0);
+
     this.token = this._usuarioService.obtenerToken();
 
   }
@@ -185,6 +198,103 @@ putDoctores(){
   )
 }
 
+getHospitales(){
+  this._usuarioService.verhospitalesAdmin(this._usuarioService.obtenerToken()).subscribe(
+
+   (response) => {
+
+     this.hospitalesModelGet = response.Usuario;
+
+     console.log(this.hospitalesModelGet);
+
+   },
+
+  )
+}
+
+ // Agregar hospital
+ agregarHospital(){
+  this._usuarioService.agregarHospital(this.hospitalModelPost, this._usuarioService.obtenerToken()).subscribe(
+
+    (response)=>{
+      console.log(response);
+      this.getHospitales();
+
+      Swal.fire(
+        '¡Agregado!',
+        'El hospital fue agregado con éxito',
+        'success'
+      )
+    },
+    (error)=>{
+      console.log(error)
+      Swal.fire({
+      icon: 'error',
+      title: 'No se pudo agregar',
+      text: error.error.message,
+      footer: 'Revise sus datos',
+
+    })
+  }
+)
+}
+
+
+ // Ver hospital id
+ verHospitalId(idHospital){
+
+  this._usuarioService.hospitalesId(idHospital, this.token).subscribe(
+
+    (response)=>{
+      console.log(response);
+
+      this.hospitalesModelGetId = response.Usuario;
+
+    },
+
+    (error)=>{
+      console.log(error)
+
+    }
+  )
+}
+
+// editar hospitales
+editarHospitales(){
+
+  this._usuarioService.editarHospitales(this.hospitalesModelGetId, this.token).subscribe(
+
+    (response)=>{
+
+      console.log(response);
+
+      this.getHospitales();
+
+    },
+
+  )
+}
+
+// eliminar hospitales
+eliminarHospitales(idHospital){
+
+  this._usuarioService.eliminarHospitales(idHospital, this.token).subscribe(
+
+    (response)=>{
+
+      console.log(response);
+
+      this.getHospitales();
+
+
+    },
+    (error)=>{
+      console.log(error)
+
+  }
+  )
+}
+
 
 
 
@@ -192,6 +302,7 @@ putDoctores(){
 
     this.getUsuarios();
     this.getDoctores();
+    this.getHospitales();
   }
 
 }

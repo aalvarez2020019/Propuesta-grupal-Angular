@@ -98,6 +98,156 @@
   <br>
   <br>
 
+  <h1 >
+    HOSPITAL</h1>
+
+    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarHospital">
+      Agregar Hospital
+    </button>
+
+    <br>
+    <br>
+
+    <div class = "container">
+      <div class ="row">
+        <div class="col-12 col-md-4" *ngFor="let hospital of hospitalesModelGet">
+          <div class="card text-white bg-secondary mb-3">
+            <div class="card-body">
+              <h4 class="card-title">{{ hospital.nombre }}</h4>
+
+              <img src="../../../assets/img/hospitales.png" class="card-img-top" alt="compras-logo">
+
+
+              <br>
+              <br>
+
+              <p class="card-text">Pais: {{hospital.pais}}</p>
+              <p class="card-text">Ciudad: {{ hospital.ciudad }}</p>
+              <p class="card-text">Direccion: {{ hospital.direccion }}</p>
+              <p class="card-text">Teléfono: {{ hospital.telefono }}</p>
+
+              <button type="button" class="btn btn-warning mx-2" data-bs-toggle="offcanvas" data-bs-target="#editarHospitalesApp"
+              aria-controls="offcanvasExample"(click)="verHospitalId(hospital._id)">Editar</button>
+
+              <button type="button" class="btn btn-danger mx-2" (click)="eliminarHospitales(hospital._id)">Eliminar</button>
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+ <!-- Modal Agregar Datos-->
+ <div class="modal fade" id="modalAgregarHospital" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+
+        <h5 class="modal-title text-light" id="exampleModalLabel">Agregar Hospitales</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+
+          <div class="mb-3 text-light">
+            <label for="inputHorario" class="form-label">Nombre Hospital</label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputHorario" name="horari" #horari="ngModel"
+            [(ngModel)]="hospitalModelPost.nombre">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputHabitacion" class="form-label"> Pais del hospital </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputHabitacion" name="inputHabitacion" #inputHabitacion="ngModel"
+            [(ngModel)]="hospitalModelPost.pais">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputSexo" class="form-label"> Ciudad </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputSexo" name="inputSexo" #inputSexo="ngModel"
+            [(ngModel)]="hospitalModelPost.ciudad">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputEs" class="form-label"> Direccion </label>
+            <input type="text" autocomplete ="off" class="form-control" id="inputEs" name="inputEs" #inputEs="ngModel"
+            [(ngModel)]="hospitalModelPost.direccion">
+          </div>
+
+          <div class="mb-3 text-light">
+            <label for="inputTel" class="form-label"> Teléfono </label>
+            <input type="number" autocomplete ="off" class="form-control" id="inputTel" name="inputTel" #inputTel="ngModel"
+            [(ngModel)]="hospitalModelPost.telefono">
+          </div>
+
+
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="agregarHospital()">Agregar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Editar Hospitales-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="editarHospitalesApp" aria-labelledby="offcanvasExampleLabel">
+
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Hospitales</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class ="mb-3">
+
+        <label for="inNombre" class="form-label"> Nombre Hospital </label>
+          <input type="text" autocomplete ="off" class="form-control" id="inNombre" name="inNombre" #inNombre="ngModel"
+          [(ngModel)]="hospitalesModelGetId.nombre">
+
+          <label for="inApellido" class="form-label"> Pais </label>
+          <input type="text" autocomplete ="off" class="form-control" id="inApellido" name="inApellido" #inApellido="ngModel"
+          [(ngModel)]="hospitalesModelGetId.pais">
+
+          <label for="Iemail" class="form-label"> Ciudad </label>
+          <input type="text" autocomplete ="off" class="form-control" id="Iemail" name="Iemail" #Iemail="ngModel"
+          [(ngModel)]="hospitalesModelGetId.ciudad">
+
+          <label for="InDirec" class="form-label"> Direccion </label>
+          <input type="text" autocomplete ="off" class="form-control" id="InDirec" name="InDirec" #InDirec="ngModel"
+          [(ngModel)]="hospitalesModelGetId.direccion">
+
+          <label for="InTel" class="form-label"> Teléfono </label>
+          <input type="number" autocomplete ="off" class="form-control" id="InTel" name="InTel" #InTel="ngModel"
+          [(ngModel)]="hospitalesModelGetId.telefono">
+
+          <br>
+
+
+          <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="editarHospitales()">Editar Hospitales</button>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
   <!-- Modal Agregar Administrador Hoteles-->
 <div class="modal fade" id="modalAgregarDoctor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 

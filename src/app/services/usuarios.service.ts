@@ -142,6 +142,25 @@ export class UsuariosService {
 
   }
 
+  // obtener datos por doctor
+  verHospitales(token) : Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token );
+
+    return this._http.get(this.url + '/verHospitales', { headers: headersToken});
+
+  }
+
+
+// obtener datos del doc
+doctorDatosUsuario(idDoctor, token) : Observable<any> {
+
+  let headersToken = this.headersVariable.set('Authorization', token )
+
+  return this._http.get(this.url + '/datosDoctorId/' + idDoctor, { headers: headersToken});
+
+}
+
 
 
 

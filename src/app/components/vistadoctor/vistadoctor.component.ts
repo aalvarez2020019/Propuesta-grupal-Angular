@@ -3,6 +3,7 @@ import { Citas } from 'src/app/models/cita.model';
 
 import { Datos } from 'src/app/models/dato.model';
 
+import { Hospitales } from 'src/app/models/hospital.model';
 
 import { DoctorservicioService } from 'src/app/services/doctorservicio.service';
 
@@ -28,6 +29,8 @@ export class VistadoctorComponent implements OnInit {
   public datosModelPost: Datos
   public datosModelGetId: Datos;
 
+  // hospitales
+  public hospitalesModelGet: Hospitales;
 
   public token;
 
@@ -41,6 +44,20 @@ export class VistadoctorComponent implements OnInit {
 
     this.token = this._doctorService.obtenerToken();
 
+  }
+
+  verHospitales(){
+    this._doctorService.getHospitales(this._doctorService.obtenerToken()).subscribe(
+
+     (response) => {
+
+       this.hospitalesModelGet = response.Usuario;
+
+       console.log(this.hospitalesModelGet);
+
+     },
+
+    )
   }
 
 
@@ -196,6 +213,7 @@ eliminarDatos(idDatos){
   ngOnInit(): void {
     this.getCitas();
     this.getDatos();
+    this.verHospitales();
   }
 
 }
