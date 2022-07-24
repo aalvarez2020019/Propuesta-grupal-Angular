@@ -1,0 +1,50 @@
+<div class="container">
+
+
+
+  <div class="card w-100 text-center mt-5">
+    <div class="card-body">
+
+      <h5 class="card-title">Editar Doctor</h5>
+      <h5><i class="fa fa-user fa-4x"></i></h5>
+      <br>
+
+      <form>
+
+        <div class="mb-3">
+          <label for="inputNombre" class="form-label" >Nombre Doctor</label>
+              <input type="text" class="form-control" id="inputNombre" name="nombreEmpresa"
+              #nombreEmpresa="ngModel" [(ngModel)]="usuariosModelGetId.nombre">
+        </div>
+
+        <div class="mb-3">
+          <label for="inputUsuario" class="form-label">Email</label>
+          <input type="text" class="form-control" id="inputUsuario" name="usuario"
+          #usuario="ngModel" [(ngModel)]="usuariosModelGetId.email">
+        </div>
+
+
+        <div class="mb-3">
+          <label for="inputDireccion" class="form-label">Direccion</label>
+          <input type="text" class="form-control" id="inputDireccion" name="inputDireccion"
+          #inputDireccion="ngModel" [(ngModel)]="usuariosModelGetId.direccion">
+        </div>
+
+
+        <div class="mb-3">
+          <label for="inputEdad" class="form-label">Edad</label>
+          <input type="number" class="form-control" id="inputEdad" name="inputEdad"
+          #inputEdad="ngModel" [(ngModel)]="usuariosModelGetId.edad">
+        </div>
+
+        <button class="btn btn-success" (click)="putUsuarios()">Editar Usuario </button>
+
+
+        <button type="button" routerLink="/login" class="btn btn-danger mx-2" (click)="eliminarUsuarios(usuariosModelGetId._id)">Eliminar</button>
+
+
+      </form>
+    </div>
+  </div>
+
+</div>

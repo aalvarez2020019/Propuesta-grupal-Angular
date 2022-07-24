@@ -206,8 +206,16 @@
 
           <div class="mb-3 text-light">
             <label for="inputHora" class="form-label"> Hora cita </label>
-            <input type="text" autocomplete ="off" class="form-control" id="inputHora" name="hora" #hora="ngModel"
+            <select type="text" autocomplete ="off" class="form-control" id="inputHora" name="hora" #hora="ngModel"
             [(ngModel)]="citasModelPost.hora">
+
+            <ng-container *ngFor="let clasificacion of clasificacion">
+              <option [value]="clasificacion.tipo">{{clasificacion.tipo}}</option>
+
+            </ng-container>
+            
+          </select>
+
           </div>
 
 

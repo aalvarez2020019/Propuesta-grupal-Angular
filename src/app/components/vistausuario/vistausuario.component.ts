@@ -48,6 +48,22 @@ export class VistausuarioComponent implements OnInit {
 
   }
 
+
+  clasificacion=[
+    {tipo: "7 a 8 AM"},
+    {tipo: "8 a 9 AM"},
+    {tipo: "9 a 10 AM"},
+    {tipo: "10 a 11 AM"},
+    {tipo: "11 a 12 PM"},
+    {tipo: "12 a 1 PM"},
+    {tipo: "1 a 2 PM"},
+    {tipo: "2 a 3 PM"},
+    {tipo: "3 a 4 PM"},
+    {tipo: "4 a 5 PM"},
+    {tipo: "5 a 6 PM"},
+    {tipo: "6 a 7 PM"},
+  ]
+
   getHospitales(){
 
     this._usuarioService.verHospitales(this._usuarioService.obtenerToken()).subscribe(

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 // import { Usuarios } from '../models/usuario.model';
 import { Citas } from '../models/cita.model';
+import { Usuarios } from '../models/usuario.model';
 
 import { Datos } from '../models/dato.model';
 
@@ -14,6 +15,7 @@ export class DoctorservicioService {
   public url: String = 'http://localhost:3000/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
   public token;
+  public identidad;
 
   constructor(public _http: HttpClient) { }
 
@@ -26,6 +28,18 @@ export class DoctorservicioService {
     }
 
     return this.token;
+  }
+
+  obtenerIdentidad(){
+    var identidad2=JSON.parse(localStorage.getItem('identidad'));
+    if(identidad2!=undefined){
+      this.identidad=identidad2;
+    }else if(identidad2==undefined){
+      this.identidad=null;
+    }
+
+    return this.identidad;
+
   }
 
    // obtener usuarios ROL_USUARIO
@@ -112,6 +126,35 @@ getHospitales(token) : Observable<any> {
   let headersToken = this.headersVariable.set('Authorization', token );
 
   return this._http.get(this.url + '/verHospitales', { headers: headersToken});
+
+}
+
+// obtener doctores id
+obtenerDoctoresId(idDoctor, token): Observable<any> {
+
+  let headersToken = this.headersVariable.set('Authorization', token );
+
+  return this._http.get(this.url + '/buscarDoctorId/' + idDoctor, { headers: headersToken});
+
+}
+
+// editar usuarios
+editarDoctores(modeloUsuarios: Usuarios, token): Observable<any> {
+
+  let parametros = JSON.stringify(modeloUsuarios);
+
+  let headersToken = this.headersVariable.set('Authorization', token);
+
+  return this._http.put(this.url + '/editarUsuarios/' + modeloUsuarios._id, parametros, { headers: headersToken })
+
+}
+
+ // Eliminar Usuarios
+ eliminarUsuarios( idUsuario, token ): Observable<any> {
+
+  let headersToken = this.headersVariable.set('Authorization', token );
+
+  return this._http.delete(this.url + '/eliminarUsuarios/' +  idUsuario, { headers: headersToken});
 
 }
 

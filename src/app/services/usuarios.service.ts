@@ -152,6 +152,7 @@ export class UsuariosService {
   }
 
 
+
 // obtener datos del doc
 doctorDatosUsuario(idDoctor, token) : Observable<any> {
 
@@ -160,6 +161,38 @@ doctorDatosUsuario(idDoctor, token) : Observable<any> {
   return this._http.get(this.url + '/datosDoctorId/' + idDoctor, { headers: headersToken});
 
 }
+
+
+// editar usuarios
+editarUsuarios(modeloUsuarios: Usuarios, token): Observable<any> {
+
+  let parametros = JSON.stringify(modeloUsuarios);
+
+  let headersToken = this.headersVariable.set('Authorization', token);
+
+  return this._http.put(this.url + '/editarUsuarios/' + modeloUsuarios._id, parametros, { headers: headersToken })
+
+}
+
+ // Eliminar Usuarios
+ eliminarUsuarios( idUsuario, token ): Observable<any> {
+
+  let headersToken = this.headersVariable.set('Authorization', token );
+
+  return this._http.delete(this.url + '/eliminarUsuarios/' +  idUsuario, { headers: headersToken});
+
+}
+
+// obtener doctores id
+getUsuarioId(idDoctor, token): Observable<any> {
+
+  let headersToken = this.headersVariable.set('Authorization', token );
+
+  return this._http.get(this.url + '/buscarDoctorId/' + idDoctor, { headers: headersToken});
+
+}
+
+
 
 
 

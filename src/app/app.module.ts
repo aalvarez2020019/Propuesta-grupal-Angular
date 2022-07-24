@@ -18,6 +18,8 @@ import { InfodoctoradminComponent } from './components/infodoctoradmin/infodocto
 import { DoctorcompoComponent } from './components/doctorcompo/doctorcompo.component';
 import { AdmincompoComponent } from './components/admincompo/admincompo.component';
 import { UsuariocompoComponent } from './components/usuariocompo/usuariocompo.component';
+import { EditardoctorComponent } from './components/editardoctor/editardoctor.component';
+import { EditarusuarioComponent } from './components/editarusuario/editarusuario.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { UsuariocompoComponent } from './components/usuariocompo/usuariocompo.co
     DoctorcompoComponent,
     AdmincompoComponent,
     UsuariocompoComponent,
+    EditardoctorComponent,
+    EditarusuarioComponent,
 
   ],
   imports: [

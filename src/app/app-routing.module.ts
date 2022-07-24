@@ -20,6 +20,8 @@ import { UsuariocompoComponent } from './components/usuariocompo/usuariocompo.co
 // ROL DOCTOR
 import { RoldoctorGuard } from './services/roldoctor.guard';
 import { DoctorcompoComponent } from './components/doctorcompo/doctorcompo.component';
+import { EditardoctorComponent } from './components/editardoctor/editardoctor.component';
+import { EditarusuarioComponent } from './components/editarusuario/editarusuario.component';
 
 
 const routes: Routes = [
@@ -44,8 +46,8 @@ const routes: Routes = [
 
   { path: 'vistausuario', component: VistausuarioComponent},
   { path: 'infodoctor/:idDoctor', component: InfodoctorComponent},
+  { path: 'editarusuario', component: EditarusuarioComponent},
 
-  // editar perfil
 
 ]},
 
@@ -54,8 +56,8 @@ const routes: Routes = [
 { path: 'doctor', component: DoctorcompoComponent, canActivate: [RoldoctorGuard], children:[
 
   { path: 'vistadoctor', component: VistadoctorComponent},
+  { path: 'editardoctor', component: EditardoctorComponent},
 
-  // editar perfil
 
 ]},
 
