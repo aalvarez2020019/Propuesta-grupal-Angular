@@ -47,6 +47,46 @@
 <br>
 <br>
 
+<h1 >
+  INFORMACIÓN ADICIONAL DEL DOCTOR</h1>
+
+  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarDatos">
+    Agregar Datos
+  </button>
+
+
+  <br>
+  <br>
+
+  <div class = "container">
+    <div class ="row">
+      <div class="col-12 col-md-4" *ngFor="let datos of datosModelGet">
+        <div class="card text-white bg-secondary mb-3">
+          <div class="card-body">
+            <h4 class="card-title">Horario: {{ datos.horario }}</h4>
+            <h4 class="card-title">Habitación: {{ datos.habitacion }}</h4>
+
+            <img src="../../../assets/img/datos2.png" class="card-img-top" alt="datosimg">
+
+            <br>
+            <br>
+          <p class="card-text">Sexo: {{datos.sexo}}</p>
+          <p class="card-text">Especialidad: {{datos.especialidad}}</p>
+          <p class="card-text">Teléfono: {{datos.telefono}}</p>
+
+
+          <button type="button" class="btn btn-warning mx-2" data-bs-toggle="offcanvas" data-bs-target="#editarDatosApp"
+          aria-controls="offcanvasExample" (click)="getDatosId(datos._id)">Editar datos</button>
+
+          <button type="button" class="btn btn-danger mx-2" (click)="eliminarDatos(datos._id)">Eliminar</button>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+
 <!-- Modal Editar Citas-->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="editarTurno" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
@@ -60,7 +100,7 @@
           <label for="numeroTurno" class="form-label"> Número de turno </label>
           <input type="number" autocomplete ="off" class="form-control" id="numeroTurno" name="numeroTurno" #numeroTurno="ngModel"
           [(ngModel)]="citasModelGetId.numeroTurno">
-          
+
           <br>
 
 
@@ -72,3 +112,102 @@
     </form>
   </div>
 </div>
+
+<!-- Modal Editar Datos-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="editarDatosApp" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar datos</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class ="mb-3">
+
+        <label for="nombre" class="form-label"> Horario </label>
+          <input type="text" autocomplete ="off" class="form-control" id="nombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="datosModelGetId.horario">
+
+          <label for="apelli" class="form-label"> Habitacion </label>
+          <input type="text" autocomplete ="off" class="form-control" id="apelli" name="apelli" #apelli="ngModel"
+          [(ngModel)]="datosModelGetId.habitacion">
+
+          <label for="emailI" class="form-label"> Sexo </label>
+          <input type="text" autocomplete ="off" class="form-control" id="emailI" name="emailI" #emailI="ngModel"
+          [(ngModel)]="datosModelGetId.sexo">
+
+          <label for="direc" class="form-label"> Especialidad </label>
+          <input type="text" autocomplete ="off" class="form-control" id="direc" name="direc" #direc="ngModel"
+          [(ngModel)]="datosModelGetId.especialidad">
+
+          <label for="iedad" class="form-label"> Telefono </label>
+          <input type="number" autocomplete ="off" class="form-control" id="iedad" name="iedad" #iedad="ngModel"
+          [(ngModel)]="datosModelGetId.telefono">
+
+          <br>
+
+          <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putDatos()">Editar Datos</button>
+
+
+      </div>
+    </form>
+  </div>
+</div>
+
+  <!-- Modal Agregar Datos-->
+  <div class="modal fade" id="modalAgregarDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+
+          <h5 class="modal-title text-light" id="exampleModalLabel">Agregar Datos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+
+            <div class="mb-3 text-light">
+              <label for="inputHorario" class="form-label">Horario disponible</label>
+              <input type="text" autocomplete ="off" class="form-control" id="inputHorario" name="horari" #horari="ngModel"
+              [(ngModel)]="datosModelPost.horario">
+            </div>
+
+            <div class="mb-3 text-light">
+              <label for="inputHabitacion" class="form-label"> Número de habitación</label>
+              <input type="text" autocomplete ="off" class="form-control" id="inputHabitacion" name="inputHabitacion" #inputHabitacion="ngModel"
+              [(ngModel)]="datosModelPost.habitacion">
+            </div>
+
+            <div class="mb-3 text-light">
+              <label for="inputSexo" class="form-label"> Sexo </label>
+              <input type="text" autocomplete ="off" class="form-control" id="inputSexo" name="inputSexo" #inputSexo="ngModel"
+              [(ngModel)]="datosModelPost.sexo">
+            </div>
+
+            <div class="mb-3 text-light">
+              <label for="inputEs" class="form-label"> Especialidad </label>
+              <input type="text" autocomplete ="off" class="form-control" id="inputEs" name="inputEs" #inputEs="ngModel"
+              [(ngModel)]="datosModelPost.especialidad">
+            </div>
+
+            <div class="mb-3 text-light">
+              <label for="inputTel" class="form-label"> Teléfono </label>
+              <input type="number" autocomplete ="off" class="form-control" id="inputTel" name="inputTel" #inputTel="ngModel"
+              [(ngModel)]="datosModelPost.telefono">
+            </div>
+
+
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postAgregarDatos()">Agregar</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
