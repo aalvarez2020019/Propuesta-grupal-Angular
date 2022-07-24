@@ -133,6 +133,15 @@ export class UsuariosService {
 
   }
 
+  // Eliminar Citas
+  eliminarCitas( idCita, token ): Observable<any> {
+
+    let headersToken = this.headersVariable.set('Authorization', token );
+
+    return this._http.delete(this.url + '/eliminarCitas/' +  idCita, { headers: headersToken});
+
+  }
+
 
 
 

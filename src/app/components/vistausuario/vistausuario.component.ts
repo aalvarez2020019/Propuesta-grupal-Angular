@@ -153,6 +153,27 @@ putCitas(){
 }
 
 
+ // eliminar citas
+ eliminarCitas(idCita){
+
+  this._usuarioService.eliminarCitas(idCita, this.token).subscribe(
+
+    (response)=>{
+
+      console.log(response);
+
+      this.getCitas();
+
+    },
+    (error)=>{
+      console.log(error)
+
+  }
+  )
+}
+
+
+
 
   ngOnInit(): void {
     this.getDoctores();
