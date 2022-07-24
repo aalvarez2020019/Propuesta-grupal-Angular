@@ -9,15 +9,55 @@ import { VistadoctorComponent } from './components/vistadoctor/vistadoctor.compo
 import { InfodoctorComponent } from './components/infodoctor/infodoctor.component';
 import { InfodoctoradminComponent } from './components/infodoctoradmin/infodoctoradmin.component';
 
+// ROL ADMIN
+import { RoladminGuard } from './services/roladmin.guard';
+import { AdmincompoComponent } from './components/admincompo/admincompo.component';
+
+// ROL USUARIO
+import { RolusuarioGuard } from './services/rolusuario.guard';
+import { UsuariocompoComponent } from './components/usuariocompo/usuariocompo.component';
+
+// ROL DOCTOR
+import { RoldoctorGuard } from './services/roldoctor.guard';
+import { DoctorcompoComponent } from './components/doctorcompo/doctorcompo.component';
+
+
 const routes: Routes = [
+
   { path: 'login', component: LoginComponent},
   { path: 'inicio', component: InicioComponent},
   { path: 'registrar', component: RegistrarComponent},
+
+  // ROL ADMIN
+
+  { path: 'admin', component: AdmincompoComponent, canActivate: [RoladminGuard], children:[
+
+
   { path: 'vistaadmin', component: VistaadminComponent},
-  { path: 'vistausuario', component: VistausuarioComponent},
-  { path: 'vistadoctor', component: VistadoctorComponent},
-  { path: 'infodoctor/:idDoctor', component: InfodoctorComponent},
   { path: 'infodoctoradmin/:idDoctor', component: InfodoctoradminComponent},
+
+]},
+
+// ROL USUARIO
+
+{ path: 'usuario', component: UsuariocompoComponent, canActivate: [RolusuarioGuard], children:[
+
+  { path: 'vistausuario', component: VistausuarioComponent},
+  { path: 'infodoctor/:idDoctor', component: InfodoctorComponent},
+
+  // editar perfil
+
+]},
+
+// ROL DOCTOR
+
+{ path: 'doctor', component: DoctorcompoComponent, canActivate: [RoldoctorGuard], children:[
+
+  { path: 'vistadoctor', component: VistadoctorComponent},
+
+  // editar perfil
+
+]},
 
 
   { path: "**", component: LoginComponent },
