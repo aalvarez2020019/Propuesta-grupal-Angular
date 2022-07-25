@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Citas } from 'src/app/models/cita.model';
+import { Datos } from 'src/app/models/dato.model';
 import { ActivatedRoute } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
@@ -12,6 +13,8 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class InfodoctorComponent implements OnInit {
 
   public horasModelGet: Citas;
+  public getDatosDoctor: Datos;
+
   public token;
 
   constructor(
@@ -30,6 +33,7 @@ export class InfodoctorComponent implements OnInit {
       console.log(dataRuta.get('idDoctor'));
 
       this.getHorasDoc(dataRuta.get('idDoctor'));
+      this.getDatosDoc(dataRuta.get('idDoctor'));
 
       // this.getHotelesTodos();
 
@@ -54,5 +58,21 @@ export class InfodoctorComponent implements OnInit {
       }
     )
   }
+
+  // get datos doctor
+  getDatosDoc(idUser){
+    this._usuariosService.doctorDatosUsuario(idUser, this.token).subscribe(
+
+      (response)=>{
+        this.getDatosDoctor = response.Usuario;
+
+        console.log(this.getDatosDoctor)
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  };
+
 
 }

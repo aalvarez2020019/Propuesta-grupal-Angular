@@ -7,25 +7,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/inicio" routerLinkActive="active">Inicio</a>
+      <!-- admin -->
+        <li *ngIf="_usuariosService.obtenerIdentidad().rol === 'ROL_ADMIN'"  class="nav-item">
+          <a class="nav-link" routerLink="/admin/vistaadmin" routerLinkActive="active"> Super Admin </a>
         </li>
 
-        <li class="nav-item">
+       <!-- usuario -->
 
-          <a class="nav-link active" aria-current="page" routerLink="/login" routerLinkActive="active">Login</a>
+        <li *ngIf="_usuariosService.obtenerIdentidad().rol === 'ROL_USUARIO'" class="nav-item">
+          <a class="nav-link" routerLink="/usuario/vistausuario" routerLinkActive="active"> Usuario </a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/registrar" routerLinkActive="active">Registrate</a>
+        <li *ngIf="_usuariosService.obtenerIdentidad().rol === 'ROL_USUARIO'" class="nav-item">
+          <a class="nav-link" routerLink="/usuario/editarusuario" routerLinkActive="active"> Editar Usuario </a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/vistaadmin" routerLinkActive="active"> Super Admin </a>
+       <!-- doctor -->
+
+        <li *ngIf="_usuariosService.obtenerIdentidad().rol === 'ROL_DOCTOR'" class="nav-item">
+          <a class="nav-link" routerLink="/doctor/vistadoctor" routerLinkActive="active"> Doctor </a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/vistausuario" routerLinkActive="active"> Usuario </a>
+        <li *ngIf="_usuariosService.obtenerIdentidad().rol === 'ROL_DOCTOR'" class="nav-item">
+          <a class="nav-link" routerLink="/doctor/editardoctor" routerLinkActive="active"> Editar Perfil </a>
         </li>
 
       </ul>

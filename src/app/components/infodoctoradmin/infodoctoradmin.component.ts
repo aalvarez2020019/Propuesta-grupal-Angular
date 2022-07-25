@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Citas } from 'src/app/models/cita.model';
+import { Datos } from 'src/app/models/dato.model';
 import { ActivatedRoute } from '@angular/router';
 import { SuperadminservicioService } from 'src/app/services/superadminservicio.service';
 
@@ -12,6 +13,9 @@ import { SuperadminservicioService } from 'src/app/services/superadminservicio.s
 export class InfodoctoradminComponent implements OnInit {
 
   public getCitasDoctor: Citas;
+
+  public getDatosDoctor: Datos;
+
   public token;
 
   constructor(
@@ -29,6 +33,7 @@ export class InfodoctoradminComponent implements OnInit {
       console.log(dataRuta.get('idDoctor'));
 
       this.verCitasDoc(dataRuta.get('idDoctor'));
+      this.getDatosDoc(dataRuta.get('idDoctor'));
 
 
     })
@@ -52,5 +57,20 @@ export class InfodoctoradminComponent implements OnInit {
       }
     )
   }
+
+  // get datos del doctor
+  getDatosDoc(idUser){
+    this._usuariosService.datosDoctorAdmin(idUser, this.token).subscribe(
+
+      (response)=>{
+        this.getDatosDoctor = response.Usuario;
+
+        console.log(this.getDatosDoctor)
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  };
 
 }
