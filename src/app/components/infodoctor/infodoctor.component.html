@@ -1,0 +1,59 @@
+<!-- Modal Ver Doctores -->
+
+<br>
+<div class="container ">
+  <div class="container text-center text-Whyte bg-white py-4">
+      <div class="container">
+                  <h1 >
+                     HORAS OCUPADAS</h1>
+<br>
+
+<div class = "container">
+  <div class ="row">
+    <div class="col-12 col-md-4" *ngFor="let user of horasModelGet">
+      <div class="card text-white bg-secondary mb-3">
+        <div class="card-body">
+          <h4 class="card-title">{{ user.hora }}</h4>
+
+          <img src="../../../assets/img/reloj.png" class="card-img-top" alt="reloj-logo">
+
+          <br>
+          <br>
+
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<h1 >
+  INFORMACIÓN DEL DOCTOR</h1>
+  <br>
+<br>
+
+<div class = "container">
+  <div class ="row">
+    <div class="col-12 col-md-4" *ngFor="let datos of getDatosDoctor">
+      <div class="card text-white bg-secondary mb-3">
+        <div class="card-body">
+          <h4 class="card-title">Horario: {{ datos.horario }}</h4>
+          <h4 class="card-title">Habitación: {{ datos.habitacion }}</h4>
+
+          <img src="../../../assets/img/datos2.png" class="card-img-top" alt="datosimg">
+
+          <br>
+          <br>
+        <p class="card-text">Sexo: {{datos.sexo}}</p>
+        <p class="card-text">Especialidad: {{datos.especialidad}}</p>
+        <p class="card-text">Teléfono: {{datos.telefono}}</p>
+
+
+
+
+        </div>
+
+    </div>
+  </div>
+</div>

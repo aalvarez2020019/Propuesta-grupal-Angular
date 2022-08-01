@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/practica-supervisada-grupa-in6-bm",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

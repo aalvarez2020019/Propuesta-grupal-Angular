@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    </head>
+  <br>
+  <br>
+
+    <body>
+        <main class ="pt-4">
+            <div class = "container align-items-center col-12 col-md-4">
+              <div class="imagen">
+                <img src="../../../assets/img/WhatsApp_Image_2022-03-25_at_7.25.42_PM-removebg-preview.png" alt="LoginIMG">
+
+              </div >
+              <div class="formulario">
+                <div class="modal-header bg-black text-white d-flex justify-content-center">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Registrar</h5>
+                </div>
+                <form  class=" bg-dark container py4 pb-4 rounded  align-content-center was-validated">
+
+                  <div class="mb-3 pt-4">
+                    <label for="user"  class="form-label text-white"><i class="fas fa-user"></i>   Nombre usuario:</label>
+                    <input type="text" autocomplete ="off" class="form-control" name="usuario" id="inputUsuario" #usuario="ngModel"
+                    [(ngModel)]="usuariosModel.nombre" required>
+                  </div>
+
+                  <div class="mb-3 pt-4">
+                    <label for="inputApellido"  class="form-label text-white"><i class="fas fa-user"></i>   apellido usuario:</label>
+                    <input type="text" autocomplete ="off" class="form-control" name="apellido" id="inputApellido" #usuario="ngModel"
+                    [(ngModel)]="usuariosModel.apellido" required>
+                  </div>
+
+                  <div class="mb-3 pt-4">
+                    <label for="user"  class="form-label text-white"><i class="fas fa-user"></i>   Email:</label>
+                    <input type="text" autocomplete ="off" class="form-control" name="email" id="inputEmail" #empresa="ngModel"
+                    [(ngModel)]="usuariosModel.email" required>
+                </div>
+
+                    <div class="mb-3">
+                        <label for="pass"  class="form-label text-white"><i class="fas fa-unlock-alt"></i>   Password:</label>
+                        <input type="password" autocomplete ="off" class="form-control" name="password"
+                        id="inputPassword" #password="ngModel" [(ngModel)]="usuariosModel.password" required>
+                    </div>
+
+                    <div class="mb-3 pt-4">
+                      <label for="inputDireccion"  class="form-label text-white"><i class="fas fa-user"></i>   Direccion:</label>
+                      <input type="text" autocomplete ="off" class="form-control" name="direccion" id="inputDireccion" #empresa="ngModel"
+                      [(ngModel)]="usuariosModel.direccion" required>
+                  </div>
+
+                    <div class="mb-3 pt-4">
+                      <label for="inputEdad"  class="form-label text-white"><i class="fas fa-user"></i>   Edad:</label>
+                      <input type="number" autocomplete ="off" class="form-control" name="edad" id="inputEdad" #usuario="ngModel"
+                      [(ngModel)]="usuariosModel.edad" required>
+                    </div>
+
+
+                    <input type="hidden" name="accion" value="validar">
+
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-danger py-3 rounded-pill" (click)="registrar()"> Registrar usuario</button>
+                        <button type="reset" class="btn btn-danger py-3 rounded-pill" routerLink="/login"> Cancelar </button>
+                    </div>
+
+                </form>
+            </div>
+          </div>
+        </main>
+        </body>
+
+</html>

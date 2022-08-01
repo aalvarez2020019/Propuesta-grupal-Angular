@@ -1,0 +1,51 @@
+
+
+        <main>
+            <div class="container pn-4 pt-4 pb-4">
+                <div class="container text-center text-black bg-white py-4">
+                    <div class="container">
+                        <h2 >BIENVENIDO</h2><hr>
+                        <h3> Bienvenido a Control de Sucursales</h3>
+                        <div class="container py-4">
+                            <img src="assets/img/WhatsApp_Image_2022-03-25_at_7.25.42_PM-removebg-preview.png" class="d-block w-100"  >
+                        </div>
+                        <h3> y recuerda siempre "El trabajo bien hecho".</h3>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="container ">
+          <div class="container text-center text-Whyte bg-white py-4">
+              <div class="container">
+                          <h1 >
+                             INFORMACION DEL HOSPITAL</h1>
+
+                             <div class="col-lg-3 col-md-4 d-flex">
+                              <button class="btn btn-primary w-100 align-self-center" routerLink="/login"> ← Regresar al login</button>
+
+                            </div>
+        <br>
+
+        <div class = "container">
+          <div class ="row">
+            <div class="col-12 col-md-4" *ngFor="let hospital of hospitalesModelGet">
+              <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                  <h4 class="card-title">{{ hospital.nombre }}</h4>
+
+                  <img src="../../../assets/img/hospitales.png" class="card-img-top" alt="compras-logo">
+
+                  <br>
+                  <br>
+
+                  <p class="card-text">Pais: {{hospital.pais}}</p>
+                  <p class="card-text">Ciudad: {{ hospital.ciudad }}</p>
+                  <p class="card-text">Direccion: {{ hospital.direccion }}</p>
+                  <p class="card-text">Teléfono: {{ hospital.telefono }}</p>
+
+                </div>
+
+            </div>
+          </div>
+        </div>

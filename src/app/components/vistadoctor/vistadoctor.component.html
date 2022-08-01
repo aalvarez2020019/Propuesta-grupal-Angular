@@ -1,0 +1,249 @@
+<!-- Modal Ver Doctores -->
+
+<br>
+<div class="container ">
+  <div class="container text-center text-Whyte bg-white py-4">
+      <div class="container">
+                  <h1 >
+                     CITAS DE ESTE DOCTOR</h1>
+<br>
+
+<div class = "container">
+  <div class ="row">
+    <div class="col-12 col-md-4" *ngFor="let cita of citasModelGet">
+      <div class="card text-white bg-secondary mb-3">
+        <div class="card-body">
+          <h4 class="card-title">{{ cita.nombre }}</h4>
+          <h4 class="card-title">{{ cita.apellido }}</h4>
+
+          <img src="../../../assets/img/citamedica.png" class="card-img-top" alt="citas-logo">
+
+          <br>
+          <br>
+
+          <p class="card-text">ID: {{cita._id}}</p>
+          <p class="card-text">Número turno: {{cita.numeroTurno}}</p>
+
+          <p class="card-text">Peso: {{cita.peso}}</p>
+          <p class="card-text">Enfermedades: {{cita.enfermedades}}</p>
+          <p class="card-text">Edad: {{cita.edad}}</p>
+          <p class="card-text">Estatura: {{cita.estatura}}</p>
+          <p class="card-text">Direccion: {{cita.direccion}}</p>
+          <p class="card-text">Pais: {{cita.pais}}</p>
+          <p class="card-text">Fecha: {{cita.fecha}}</p>
+          <p class="card-text">Hora: {{cita.hora}}</p>
+          <p class="card-text">Telefono: {{cita.telefono}}</p>
+
+
+          <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editarTurno"
+          aria-controls="offcanvasExample" (click)="getCitasId(cita._id)">Asignar Turno</button>
+
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<h1 >
+  INFORMACIÓN ADICIONAL DEL DOCTOR</h1>
+
+  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarDatos">
+    Agregar Datos
+  </button>
+
+
+  <br>
+  <br>
+
+  <div class = "container">
+    <div class ="row">
+      <div class="col-12 col-md-4" *ngFor="let datos of datosModelGet">
+        <div class="card text-white bg-secondary mb-3">
+          <div class="card-body">
+            <h4 class="card-title">Horario: {{ datos.horario }}</h4>
+            <h4 class="card-title">Habitación: {{ datos.habitacion }}</h4>
+
+            <img src="../../../assets/img/datos2.png" class="card-img-top" alt="datosimg">
+
+            <br>
+            <br>
+          <p class="card-text">Sexo: {{datos.sexo}}</p>
+          <p class="card-text">Especialidad: {{datos.especialidad}}</p>
+          <p class="card-text">Teléfono: {{datos.telefono}}</p>
+
+
+          <button type="button" class="btn btn-warning mx-2" data-bs-toggle="offcanvas" data-bs-target="#editarDatosApp"
+          aria-controls="offcanvasExample" (click)="getDatosId(datos._id)">Editar datos</button>
+
+          <button type="button" class="btn btn-danger mx-2" (click)="eliminarDatos(datos._id)">Eliminar</button>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <h1 >
+    HOSPITAL</h1>
+
+    <br>
+    <br>
+
+    <div class = "container">
+      <div class ="row">
+        <div class="col-12 col-md-4" *ngFor="let hospital of hospitalesModelGet">
+          <div class="card text-white bg-secondary mb-3">
+            <div class="card-body">
+              <h4 class="card-title">{{ hospital.nombre }}</h4>
+
+              <img src="../../../assets/img/hospitales.png" class="card-img-top" alt="compras-logo">
+
+
+              <br>
+              <br>
+
+              <p class="card-text">Pais: {{hospital.pais}}</p>
+              <p class="card-text">Ciudad: {{ hospital.ciudad }}</p>
+              <p class="card-text">Direccion: {{ hospital.direccion }}</p>
+              <p class="card-text">Teléfono: {{ hospital.telefono }}</p>
+
+
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+<!-- Modal Editar Citas-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="editarTurno" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Asignar Turno</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class ="mb-3">
+
+          <label for="numeroTurno" class="form-label"> Número de turno </label>
+          <input type="number" autocomplete ="off" class="form-control" id="numeroTurno" name="numeroTurno" #numeroTurno="ngModel"
+          [(ngModel)]="citasModelGetId.numeroTurno">
+
+          <br>
+
+
+          <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="editarTurno()">Asignar Turno</button>
+
+
+
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Editar Datos-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="editarDatosApp" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar datos</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class ="mb-3">
+
+        <label for="nombre" class="form-label"> Horario </label>
+          <input type="text" autocomplete ="off" class="form-control" id="nombre" name="nombre" #nombre="ngModel"
+          [(ngModel)]="datosModelGetId.horario">
+
+          <label for="apelli" class="form-label"> Habitacion </label>
+          <input type="text" autocomplete ="off" class="form-control" id="apelli" name="apelli" #apelli="ngModel"
+          [(ngModel)]="datosModelGetId.habitacion">
+
+          <label for="emailI" class="form-label"> Sexo </label>
+          <input type="text" autocomplete ="off" class="form-control" id="emailI" name="emailI" #emailI="ngModel"
+          [(ngModel)]="datosModelGetId.sexo">
+
+          <label for="direc" class="form-label"> Especialidad </label>
+          <input type="text" autocomplete ="off" class="form-control" id="direc" name="direc" #direc="ngModel"
+          [(ngModel)]="datosModelGetId.especialidad">
+
+          <label for="iedad" class="form-label"> Telefono </label>
+          <input type="number" autocomplete ="off" class="form-control" id="iedad" name="iedad" #iedad="ngModel"
+          [(ngModel)]="datosModelGetId.telefono">
+
+          <br>
+
+          <button class="btn btn-success" data-bs-dismiss="offcanvas" (click)="putDatos()">Editar Datos</button>
+
+
+      </div>
+    </form>
+  </div>
+</div>
+
+  <!-- Modal Agregar Datos-->
+  <div class="modal fade" id="modalAgregarDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+
+          <h5 class="modal-title text-light" id="exampleModalLabel">Agregar Datos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+
+            <div class="mb-3 text-light">
+              <label for="inputHorario" class="form-label">Horario disponible</label>
+              <input type="text" autocomplete ="off" class="form-control" id="inputHorario" name="horari" #horari="ngModel"
+              [(ngModel)]="datosModelPost.horario">
+            </div>
+
+            <div class="mb-3 text-light">
+              <label for="inputHabitacion" class="form-label"> Número de habitación</label>
+              <input type="text" autocomplete ="off" class="form-control" id="inputHabitacion" name="inputHabitacion" #inputHabitacion="ngModel"
+              [(ngModel)]="datosModelPost.habitacion">
+            </div>
+
+            <div class="mb-3 text-light">
+              <label for="inputSexo" class="form-label"> Sexo </label>
+              <input type="text" autocomplete ="off" class="form-control" id="inputSexo" name="inputSexo" #inputSexo="ngModel"
+              [(ngModel)]="datosModelPost.sexo">
+            </div>
+
+            <div class="mb-3 text-light">
+              <label for="inputEs" class="form-label"> Especialidad </label>
+              <input type="text" autocomplete ="off" class="form-control" id="inputEs" name="inputEs" #inputEs="ngModel"
+              [(ngModel)]="datosModelPost.especialidad">
+            </div>
+
+            <div class="mb-3 text-light">
+              <label for="inputTel" class="form-label"> Teléfono </label>
+              <input type="number" autocomplete ="off" class="form-control" id="inputTel" name="inputTel" #inputTel="ngModel"
+              [(ngModel)]="datosModelPost.telefono">
+            </div>
+
+
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postAgregarDatos()">Agregar</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
